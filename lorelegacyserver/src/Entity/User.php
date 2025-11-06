@@ -4,6 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Patch;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -21,8 +25,14 @@ use App\State\UserPasswordStateProcessor;
 #[ApiResource(
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:write']],
+    operations: [
+        new GetCollection(),
+        new Get(),
+        new Post(processor: UserPasswordStateProcessor::class),
+        new Delete(),
+        new Patch()
+    ]
 )]
-#[Post(processor: UserPasswordStateProcessor::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
