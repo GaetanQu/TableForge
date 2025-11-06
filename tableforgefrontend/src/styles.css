@@ -1,7 +1,12 @@
 /*
+
+Colors & fonts are generated with Realtime Colors
+
 https://www.realtimecolors.com/?colors=fae5f0-1f0513-ea8bbd-8e2f1a-dd8f46&fonts=Inter-Inter
+
 */
 
+/* Colors */
 @media (prefers-color-scheme: light) {
   :root {
     --text: #1a0510;
@@ -21,6 +26,12 @@ https://www.realtimecolors.com/?colors=fae5f0-1f0513-ea8bbd-8e2f1a-dd8f46&fonts=
   }
 }
 
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* Shades */
 @media (prefers-color-scheme: light) {
   :root {
     --text-50: #fbeaf3;
@@ -150,8 +161,38 @@ https://www.realtimecolors.com/?colors=fae5f0-1f0513-ea8bbd-8e2f1a-dd8f46&fonts=
   }
 }
 
+/* Fonts */
+body {
+  font-family: 'Abyssinica SIL';
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Lavishly Yours';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+/* Dimensioning */
 
 body {
-    color: var(--text);
-    background-color: var(--background);
+  margin: 0;
+  padding: 0;
+}
+/* Dark mode */
+@media(prefers-color-scheme: dark) {
+  .background {
+  }
 }
