@@ -1,13 +1,30 @@
 <div class="login-component">
     <img src="assets/images/ai-generated-7516265_1280.jpg" alt="Background image" class="background">
     <main>
-
+        <div class="pseudo-background"></div>
+        <div class="left-container">
+            <img src="assets/images/wizard-8562295_1280.jpg" alt="Wizard">
+        </div>
+        <div class="right-container">
+            <h1>TableForge</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="form-field">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input id="username" type="text" formControlName="username" placeholder="JohnDoe123">
+                </div>
+                <div class="form-field">
+                    <label for="password">Mot de passe</label>
+                    <input id="password" type="password" formControlName="password" placeholder="********">
+                </div>
+                <div class="form-field remember-me-class">
+                    <input id="remember-me" type="checkbox" formControlName="rememberMe">
+                    <label for="remember-me">Se souvenir de moi</label>
+                </div>
+                <button type="submit">Se connecter</button>
+                @if (this.invalidCredentials) {
+                    <span class="invalid-credentials">Identifiants invalides</span>
+                }
+            </form>
+        </div>
     </main>
-    <!--
-    <form [formGroup]="loginForm">
-        <label for="username">Nom d'utilisateur</label>
-        <input id="username" type="text" formControlName="username" placeholder="JohnDoe123">
-        <label for="password">Mot de passe</label>
-        <input id="password" type="password" formControlName="password" placeholder="********">
-    </form>-->
 </div>

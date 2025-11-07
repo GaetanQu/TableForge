@@ -13,22 +13,27 @@ export class AuthService {
   ){}
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    return localStorage.getItem(this.tokenKey) || sessionStorage.getItem(this.tokenKey);
   }
 
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
 
-  saveToken(token: string) {
-    localStorage.setItem(this.tokenKey, token);
+  saveToken(token: string, rememberMe: boolean) {
+    if (rememberMe) {
+      localStorage.setItem(this.tokenKey, token);
+    } else {
+      sessionStorage.setItem(this.tokenKey, token);
+    }
   }
 
-  login(data:LoginDTO) {
-    this.api.post('login', data)
+  login(data: LoginDTO, rememberMe: boolean) {
+    return this.api.post('login', data);
   }
 
   logout() {
     localStorage.removeItem(this.tokenKey);
+    sessionStorage.removeItem(this.tokenKey);
   }
 }
